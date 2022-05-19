@@ -14,12 +14,17 @@ export interface IToDo {
 
 export const toDoState = atom<IToDo[]>({
 	key: 'toDo',
-	default: [],
+	default: JSON.parse(localStorage.getItem('TO_DO') || '[]'),
 });
 
-export const categoryState = atom({
+export const categoryState = atom<Categoris>({
 	key: 'category',
 	default: Categoris.TO_DO,
+});
+
+export const newCategoris = atom<string[]>({
+	key: 'newCategory',
+	default: [],
 });
 
 export const toDoSelector = selector({
